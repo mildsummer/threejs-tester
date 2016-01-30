@@ -1,0 +1,159 @@
+// top
+.topMainvis
+  position: relative
+  margin: -70px 0 60px
+  overflow: hidden
+  background: #000
+  &:after
+    //+loadingIcon
+  @media screen and (max-width: $spWidth)
+    margin: 0
+  &__inr
+    position: relative
+    z-index: 1
+    display: block
+    margin: 0
+    overflow: hidden
+    transform: scale(1.02)
+    transition: opacity 2s $MDMotion 0.1s, transform 2s $MDMotion 0.1s
+  &__link
+    display: block
+  &__img
+    display: inline
+    &__wrap
+      display: block
+      width: 100%
+      height: 100vh
+      margin: 0
+      background-color: $bgColor
+      background-position: center center
+      background-size: cover
+      +notxt
+      @media screen and (max-width: $spWidth)
+        height: 90vh
+        height: calc( 100vh - 60px )
+  &__info
+    margin: -105px 0 0px
+    transform: translate3d(0, 30px, 0)
+    background: #fff
+    min-height: 120px
+    transition: opacity 2s $MDMotion 0.5s, transform 2s $MDMotion 0.5s
+    @media screen and (max-width: $spWidth)
+      margin-top: 0
+      min-height: 0
+      background: none
+  &__tag
+    position: absolute
+    left: 60px
+    top: -24px
+    font-size: 11px
+    font-weight: bold
+    display: block
+    float: left
+    min-width: 80px
+    padding: 12px 10px
+    text-align: center
+    letter-spacing: $ls
+    background: #fff
+    +wf
+    @media screen and (max-width: $spWidth)
+      display: none
+      color: $color
+  &__ttl
+    font-size: 16px
+    display: inline
+    @media screen and (max-width: $tbWidth) and (min-width: $spWidth)
+      font-size: 14px
+    @media screen and (max-width: $spWidth)
+      color: #fff
+      font-size: 13px
+      +ellipsis
+  &__caption
+    padding: 30px 60px 0
+    clear: both
+    +ellipsis
+    @media screen and (max-width: $spWidth)
+      padding: 0
+      position: absolute
+      left: 0
+      right: 0
+      bottom: 0
+      padding: 50px 20px 30px
+      background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,.32) 100%)
+      color: #fff
+  &__txt
+    font-size: 13px
+    display: inline
+    padding-left: 1em
+    color: rgba(255, 255, 255, .7)
+    @media screen and (max-width: $spWidth)
+      font-size: 12px
+      text-align: center
+    &:first-child
+      padding-left: 0
+    &__wrap
+      display: inline
+      padding-left: 30px
+      @media screen and (max-width: $spWidth)
+        display: inline
+        color: #fff
+        padding-left: 0
+        // +ellipsis
+
+  // exhibition
+  &--exhibition
+    @media screen and (max-width: $spWidth)
+      .topMainvis__ttl
+        display: block
+        font-size: 14px
+        font-weight: bold
+      .topMainvis__txt__wrap
+        display: block
+        +ellipsis
+      .topMainvis__tag__wrap
+        text-align: center
+        font-weight: 700
+        margin: 0 0 20px
+        font-size: 11px
+        &:before
+          content: 'EXHIBITION'
+          display: inline-block
+          color: #fff
+          +wf
+          padding-right: 15px
+          letter-spacing: $ls
+      .topMainvis__tag
+        display: inline-block
+        position: relative
+        float: none
+        margin: 0
+        padding: 8px 12px 6px
+        position: static
+        min-width: auto
+        vertical-align: middle
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

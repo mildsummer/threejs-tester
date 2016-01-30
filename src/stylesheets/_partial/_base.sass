@@ -1,0 +1,886 @@
+//
+// mixin, include
+// --------------------------------------------------
+
+// +notxt
+=notxt
+  overflow: hidden
+  white-space: nowrap
+  text-indent: 100%
+
+// +clear
+=clear
+  &:after
+    display: block
+    clear: both
+    content: ''
+
+// +ellipsis
+=ellipsis
+  overflow: hidden
+  white-space: nowrap
+  text-overflow: ellipsis
+
+$color: #000
+$bgColor: #171917
+$linkcolor: #8a8a8a
+$hovercolor: #fff
+$ls: 0.15em
+$minw: 1200px
+$tbWidth: 1024px
+$spWidth: 740px
+// transition: opacity 0.36s $MDMotion
+//$MDMotion: cubic-bezier(0.55, 0, 0.1, 1)
+$MDMotion: cubic-bezier(0.215, 0.61, 0.355, 1)
+
+//  +ov
+=ov
+  transition: opacity 0.36s $MDMotion
+  opacity: 1
+  &:hover
+    cursor: pointer
+    opacity: 0.5
+=ov2
+  opacity: 0.5
+  &:hover
+    cursor: pointer
+    opacity: 0.5
+
+//  +wf
+=wf
+  // .tk-ff-din-web
+  // Regular 400
+  // Medium 600
+  // Bold 700
+  font-family: 'ff-din-web', sans-serif
+
+// retina
+// +r-sprite($***)
+=r-sprite-width($sprite)
+  width: nth($sprite, 5) / 2
+
+=r-sprite-height($sprite)
+  height: nth($sprite, 6) / 2
+
+=r-sprite-position($sprite)
+  $sprite-offset-x: nth($sprite, 3) / 2
+  $sprite-offset-y: nth($sprite, 4) / 2
+
+  background-position: $sprite-offset-x $sprite-offset-y
+
+=r-sprite-size($sprite)
+  background-size: (nth($sprite, 7) / 2) (nth($sprite, 8) / 2)
+
+=r-sprite($sprite)
+  +sprite-image($sprite)
+  +r-sprite-position($sprite)
+  +r-sprite-width($sprite)
+  +r-sprite-height($sprite)
+  +r-sprite-size($sprite)
+
+// +menuSelect
+=menuSelect
+  &:before
+    transform: scale3d(0,1,1)
+    transition: transform 0.12s $MDMotion 0s
+  &.is-current
+    &:before
+      transform: scale3d(1,1,1)
+      transition: transform 0.12s $MDMotion 0.12s
+
+// +loadingIcon(20px,#aaa,#aaa)
+=loadingIcon($size: 40px, $baseColor: #3d3d3d ,$activeColor: #707070)
+  position: absolute
+  z-index: 0
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+  width: $size
+  height: $size
+  margin: auto
+  content: ''
+  border: 2px solid $baseColor
+  border-left-color: $activeColor
+  border-radius: 50%
+  animation: loading 1s linear 0s infinite
+
+=slideIn
+  transform: translate3d(0, 30px, 0)
+  transition: opacity 1s $MDMotion, transform 1s $MDMotion
+
+@keyframes loading
+  0%
+    transform: rotate(0deg)
+  100%
+    transform: rotate(360deg)
+
+// +fadeInMovie
+@keyframes fadeInMovie
+  0%
+    opacity: 0
+  100%
+    opacity: 1
+
+//
+// Base
+// --------------------------------------------------
+
+body
+  -moz-osx-font-smoothing: grayscale
+  -webkit-font-smoothing: antialiased
+  font-family: Helvetica, Arial, 'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro', '游ゴシック', 'Yu Gothic', YuGothic, Osaka,'メイリオ',Meiryo,'ＭＳ Ｐゴシック','MS P Gothic', sans-serif
+  color: $color
+  font-size: 14px
+  line-height: 1.6
+
+img
+  vertical-align: middle
+
+h1, h2, h3, h4, h5, h6
+  margin: 0
+  font-size: 1em
+
+p
+  margin: 0
+
+ol, ul
+  margin: 0
+  padding: 0
+
+li
+  list-style: none
+
+dl, dd
+  margin: 0
+
+small
+  font-size: 100%
+
+em
+  font-style: normal
+
+a
+  color: $color
+  text-decoration: none
+
+input,
+a,
+button,
+textarea
+  outline: 0
+
+//
+// template
+// --------------------------------------------------
+
+.header
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  z-index: 100
+  height: 96px
+  padding: 0 40px 0 40px
+  background: #fff
+  +clear
+  transition: opacity 2s $MDMotion 0.2s, height 0.36s $MDMotion 0s
+  @media screen and (max-width: $spWidth)
+    height: 60px
+  &.is-fixed
+    height: 70px
+    // @media screen and (max-width: $spWidth)
+      // height: 60px
+    .header__logo__link
+      top: 12px
+      // @media screen and (max-width: $spWidth)
+      //   top: 4px
+    // .headMenu
+      // @media screen and (max-width: $spWidth)
+      //   top: 50px
+    .headMenu__list
+      padding-top: 17px
+      @media screen and (max-width: $spWidth)
+        padding-top: 0
+    .headMenu__list__toggle
+      top: 17px
+    .headMenu2
+      padding-top: 17px
+      @media screen and (max-width: $spWidth)
+        padding-top: 12px
+  &__logo
+    width: 3.4em
+    height: 1.05em
+    text-align: center
+    font-size: 40px
+    color: $color
+    +notxt
+    @media screen and (max-width: $spWidth)
+      font-size: 30px
+    &:before
+      display: block
+      text-indent: 0
+      width: 3.4em
+      text-align: center
+      +iconfont($logo)
+    &__link
+      position: absolute
+      top: 22px
+      left: 30px
+      display: block
+      font-size: 40px
+      // height: 27px
+      @media screen and (max-width: $spWidth)
+        font-size: 30px
+      transition: top 0.36s $MDMotion 0s
+      @media screen and (max-width: $spWidth)
+        font-size: 30px
+        left: 50px
+        right: 50px
+        top: 14px
+        bottom: auto
+        width: 3.4em
+        margin: 0 auto
+    &__img
+      display: block
+      width: 146px
+      @media screen and (max-width: $spWidth)
+        width: 125px
+
+.headMenu
+  @media screen and (max-width: $spWidth)
+    position: fixed
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    opacity: 0
+    background: #1c1b1a
+    transform: translate3d(0, 0, 0)
+    display: none
+    &:before
+      content: ''
+      position: absolute
+      left: 50px
+      right: 50px
+      top: 14px
+      bottom: auto
+      width: 3.4em
+      margin: 0 auto
+      display: block
+      color: #fff
+      font-size: 30px
+      +iconfont($logo)
+  &.is-visible
+    & + .headMenu__toggle
+      @media screen and (max-width: $spWidth)
+        &:before
+          background: #767575
+          top: 9px
+          transform: rotate(-135deg)
+          // transition: color 0.24s $MDMotion 0.24s, top 0.24s $MDMotion 0s, transform 0.24s $MDMotion 0.24s
+        &:after
+          background: #767575
+          bottom: 9px
+          transform: rotate(135deg)
+          // transition: color 0.24s $MDMotion 0.24s, bottom 0.24s $MDMotion 0s, transform 0.24s $MDMotion 0.24s
+      .headMenu__toggle__inr
+        @media screen and (max-width: $spWidth)
+          opacity: 0
+
+    @media screen and (max-width: $spWidth)
+      transition: opacity 0.24s $MDMotion
+      .headMenu__inr
+        opacity: 1
+  &__inr
+    @media screen and (max-width: $spWidth)
+      position: absolute
+      left: 0
+      top: 70px
+      right: 0
+      bottom: 0
+      overflow-y: auto
+      overflow-x: hidden
+      -webkit-overflow-scrolling: touch
+
+  &__list
+    font-size: 12px
+    letter-spacing: 0.05em
+    float: left
+    margin: 0 0 0 160px
+    padding: 28px 0 0
+    vertical-align: top
+    transition: padding-top 0.36s $MDMotion 0s
+    +wf
+    @media screen and (min-width: $tbWidth + 176)
+      opacity: 1 !important
+    @media screen and (max-width: $tbWidth + 176) and (min-width: $spWidth)
+      display: none
+      position: absolute
+      left: 34px
+      top: 40px
+      background: #fff
+    @media screen and (max-width: $spWidth)
+      margin: 0
+      padding: 0px 0
+      float: left
+      width: 50%
+      box-sizing: border-box
+    &.is-visible
+      @media screen and (max-width: $tbWidth + 176) and (min-width: $spWidth)
+        display: block
+    &__toggle
+      display: none
+      +ov
+      @media screen and (max-width: $tbWidth + 176) and (min-width: $spWidth)
+        display: block
+        z-index: 2
+        position: absolute
+        left: 220px
+        top: 26px
+        font-size: 12px
+        letter-spacing: 0.05em
+        padding: 12px 0px
+        cursor: pointer
+        transition: all 0.36s $MDMotion 0s
+        +wf
+        &:after
+          position: relative
+          display: inline-block
+          width: 4px
+          height: 4px
+          margin: 0 0 0 10px
+          content: ''
+          transform: rotate(45deg)
+          vertical-align: 3px
+          border-right: 1px solid #000
+          border-bottom: 1px solid #000
+          // transition: all 0.12s $MDMotion
+      &.is-visible
+        &:after
+          transform: rotate(225deg)
+          top: 2px
+  &__item
+    position: relative
+    display: inline-block
+    // padding: 10px 15px
+    // +menuSelect
+    @media screen and (max-width: $tbWidth + 176) and (min-width: $spWidth)
+      display: block
+      background: #fff
+      &:last-child
+        .headMenu__item__link
+          padding-bottom: 20px
+    @media screen and (max-width: $spWidth)
+      display: block
+      padding: 0 0 0 40px
+    &.is-current
+      .headMenu__item__link
+        +ov2
+    &__link
+      display: block
+      padding: 10px 15px
+      text-decoration: none
+      color: $color
+      +ov
+      @media screen and (max-width: $tbWidth + 176) and (min-width: $spWidth)
+        padding: 10px 26px
+      @media screen and (max-width: $spWidth)
+        padding: 12px 0
+        color: #fff
+        font-size: 13px
+        font-weight: 600
+  &__toggle
+    display: none
+    transition: top 0.36s $MDMotion 0s
+    @media screen and (max-width: $spWidth)
+      display: block
+      position: absolute
+      right: 20px
+      top: 0
+      bottom: 0
+      margin: auto 0
+      // background: $color
+      width: 25px
+      height: 20px
+      // +r-sprite($icon_menubtn)
+      // +notxt
+      transition: all 0.24s $MDMotion
+      &:before
+        content: ''
+        position: absolute
+        left: 0
+        top: 0px
+        right: 0
+        height: 2px
+        background: $color
+        transform: rotate(0deg)
+        transition: color 0.24s $MDMotion 0s, top 0.24s $MDMotion 0s, transform 0.24s $MDMotion 0s
+      &:after
+        content: ''
+        position: absolute
+        left: 0
+        bottom: 0px
+        right: 0
+        height: 2px
+        background: $color
+        transform: rotate(0deg)
+        transition: color 0.24s $MDMotion 0s, bottom 0.24s $MDMotion 0s, transform 0.24s $MDMotion 0s
+      &__inr
+        position: absolute
+        left: 0
+        top: 9px
+        right: 0
+        height: 2px
+        background: $color
+        opacity: 1
+        transform: rotate(0deg)
+        transition: opacity 0.24s $MDMotion 0s
+        overflow: hidden
+
+.headMenu2
+  float: right
+  width: 480px
+  padding: 28px 0 0
+  text-align: right
+  transition: padding-top 0.36s $MDMotion 0s
+  @media screen and (max-width: $spWidth)
+    float: none
+    padding: 0
+    width: auto
+  &__list
+    font-size: 12px
+    letter-spacing: 0.05em
+    display: inline-block
+    margin: 0 0 0 0
+    +wf
+    @media screen and (max-width: $spWidth)
+      display: block
+      float: right
+      width: 50%
+      text-align: left
+      margin: 0
+      box-sizing: border-box
+      margin: 0 0 24px -1px
+      border-left: 1px solid #000
+  &__item
+    position: relative
+    display: inline-block
+    padding: 10px 15px
+    // +menuSelect
+    &.is-current
+      .headMenu2__item__link
+        +ov2
+    @media screen and (max-width: $tbWidth + 176) and (min-width: $spWidth)
+      padding: 10px 12px
+    @media screen and (max-width: $spWidth)
+      display: block
+      padding: 12px 0 12px 40px
+    &--sp
+      display: none
+      @media screen and (max-width: $spWidth)
+        display: block
+    &__link
+      text-decoration: none
+      color: $color
+      +ov
+      @media screen and (max-width: $spWidth)
+        color: #fff
+        font-size: 13px
+        font-weight: 600
+
+.headSearch
+  position: relative
+  display: inline-block
+  padding: 0 15px
+  @media screen and (max-width: $spWidth)
+    display: block
+    padding: 25px 10px
+    margin: 0 30px
+    text-align: left
+    border-top: 1px solid #000
+    clear: both
+  &__btn
+    display: inline-block
+    vertical-align: -3px
+    width: 1em
+    height: 1em
+    font-size: 15px
+    +notxt
+    +ov
+    @media screen and (max-width: $spWidth)
+      display: none !important
+    &:before
+      display: block
+      +iconfont($icon_search)
+  &__form
+    display: none
+    position: absolute
+    left: -360px
+    top: -6px
+    width: 400px
+    height: 36px
+    @media screen and (max-width: $spWidth)
+      display: block !important
+      position: relative
+      left: auto
+      top: auto
+      width: auto
+    &.is-visible
+      display: block
+      @media screen and (max-width: $spWidth)
+        width: auto
+        left: 0
+        top: 10px
+        right: 20px
+  &__input
+    width: 390px
+    line-height: 36px
+    padding: 0 40px 0 10px
+    background: #e8ebe8
+    border: none
+    box-sizing: border-box
+    @media screen and (max-width: $tbWidth + 176) and (min-width: $spWidth)
+      width: 370px
+    @media screen and (max-width: $spWidth)
+      width: 100%
+      padding: 0 0 0 40px
+      font-size: 15px
+      background: none
+      color: #fff
+    &:focus
+      outline: 0
+      @media screen and (max-width: $spWidth)
+        border-bottom: 1px solid #8e8d8d
+        border-radius: none
+      &::-webkit-input-placeholder
+        opacity: 0
+      &:-ms-input-placeholder
+        opacity: 0
+      &::-moz-placeholder
+        opacity: 0
+    &::-webkit-input-placeholder
+      opacity: 0
+      @media screen and (max-width: $spWidth)
+        color: #fff
+        font-size: 13px
+        font-weight: 600
+        opacity: 1
+        +wf
+    &:-ms-input-placeholder
+      opacity: 0
+      @media screen and (max-width: $spWidth)
+        color: #fff
+        font-size: 13px
+        opacity: 1
+        font-weight: 600
+        +wf
+    &::-moz-placeholder
+      opacity: 1
+      @media screen and (max-width: $spWidth)
+        color: #fff
+        font-size: 13px
+        font-weight: 600
+        opacity: 0
+        +wf
+  &__submit
+    margin: 0
+    padding: 0
+    border: none
+    position: absolute
+    right: 2px
+    top: 0
+    bottom: 0
+    width: 30px
+    background: none
+    +notxt
+    +ov
+    @media screen and (max-width: $spWidth)
+      position: absolute
+      right: auto
+      left: 2px
+      color: #fff
+    &:before
+      content: ''
+      position: absolute
+      left: 0
+      top: 0
+      right: 1px
+      bottom: 2px
+      margin: auto
+      width: 1em
+      height: 1em
+      font-size: 15px
+      +iconfont($icon_search)
+      @media screen and (max-width: $spWidth)
+        font-size: 20px
+
+
+
+.headLangSelect
+  position: relative
+  display: inline-block
+  padding: 0 0 0 10px
+  @media screen and (max-width: $spWidth)
+    display: block
+    margin: 0 30px
+    padding: 20px 0
+    border-top: 1px solid #000
+  &.is-visible
+    .headLangSelect__list
+      display: block
+      @media screen and (max-width: $spWidth)
+        position: static
+        display: block
+        padding-top: 0
+        margin-left: 0
+    .headLangSelect__selected
+      &:after
+        transform: rotate(225deg)
+        top: 2px
+  &__selected
+    display: block
+    font-size: 12px
+    letter-spacing: 0.05em
+    +ov
+    +wf
+    &:after
+      position: relative
+      display: inline-block
+      width: 4px
+      height: 4px
+      margin: 0 0 0 10px
+      content: ''
+      transform: rotate(45deg)
+      vertical-align: 3px
+      border-right: 1px solid #000
+      border-bottom: 1px solid #000
+      // transition: all 0.12s $MDMotion
+    @media screen and (max-width: $spWidth)
+      display: none
+  &__list
+    display: none
+    position: absolute
+    z-index: 10
+    top: 20px
+    left: 50%
+    padding: 10px 0 0
+    margin-left: -40px
+    background: #fff
+    @media screen and (max-width: $spWidth)
+      display: block !important
+      position: relative
+      left: auto
+      top: auto
+      margin: 0
+      padding: 0
+      background: none
+      text-align: center
+  &__item
+    display: block
+    &:last-child
+      .headLangSelect__item__link
+        padding-bottom: 20px
+        @media screen and (max-width: $spWidth)
+          padding-bottom: 0
+    @media screen and (max-width: $spWidth)
+      display: inline-block
+    &.is-current
+      .headLangSelect__item__link
+        color: $color
+        @media screen and (max-width: $spWidth)
+          color: #fff
+    &__link
+      font-size: 12px
+      display: block
+      padding: 10px 0px
+      width: 76px
+      text-align: center
+      text-decoration: none
+      +ov
+      +wf
+      @media screen and (max-width: $spWidth)
+        border-top: none
+        width: auto
+        padding: 0
+        margin: 10px 15px
+        color: #fff
+        font-weight: 600
+
+.headSns
+  display: none
+  @media screen and (max-width: $spWidth)
+    display: block
+    margin: 0 30px
+    padding: 28px 0 25px
+    border-top: 1px solid #000
+    text-align: center
+  &__list
+    white-space: nowrap
+  &__item
+    display: inline-block
+  &__link
+    display: inline-block
+    color: #fff
+    font-size: 20px
+    width: 1em
+    height: 1em
+    +notxt
+    +ov
+    @media screen and (max-width: $spWidth)
+      margin: 0 15px
+    &--fb
+      &:before
+        display: block
+        text-indent: 0
+        text-align: center
+        +iconfont($icon_facebook)
+    &--tw
+      &:before
+        display: block
+        text-indent: 0
+        text-align: center
+        +iconfont($icon_twitter)
+    &--in
+      &:before
+        display: block
+        text-indent: 0
+        text-align: center
+        +iconfont($icon_instagram)
+    &--yt
+      &:before
+        display: block
+        text-indent: 0
+        text-align: center
+        +iconfont($icon_youtube)
+
+.mainCont
+  padding: 96px 0 0
+  transition: opacity 0.2s $MDMotion
+  min-height: calc( 100vh - 96px - 216px )
+  @media screen and (max-width: $spWidth)
+    padding-top: 60px
+    min-height: calc( 100vh - 60px - 192px )
+
+.footer
+  background: $bgColor
+
+.footMenu
+  float: left
+  padding: 96px 0 0 120px
+  @media screen and (max-width: $tbWidth) and (min-width: $spWidth)
+    padding-left: 40px
+  @media screen and (max-width: $spWidth)
+    display: none
+  &__list
+    white-space: nowrap
+  &__item
+    display: inline-block
+    padding-right: 30px
+    &__link
+      color: #fff
+      font-size: 12px
+      letter-spacing: 0.05em;
+      +wf
+      +ov
+
+.footSns
+  float: right
+  padding: 96px 120px 0 0
+  @media screen and (max-width: $tbWidth) and (min-width: $spWidth)
+    padding-right: 40px
+  @media screen and (max-width: $spWidth)
+    float: none
+    padding: 75px 0 50px
+  &__list
+    text-align: right
+    white-space: nowrap
+    @media screen and (max-width: $spWidth)
+      text-align: center
+  &__item
+    display: inline-block
+  &__link
+    display: inline-block
+    margin-left: 30px
+    color: #fff
+    width: 1em
+    height: 1em
+    font-size: 20px
+    +notxt
+    +ov
+    @media screen and (max-width: $spWidth)
+      margin-left: 20px
+      margin-right: 20px
+    &--fb
+      &:before
+        display: block
+        text-indent: 0
+        text-align: center
+        +iconfont($icon_facebook)
+    &--tw
+      &:before
+        display: block
+        text-indent: 0
+        text-align: center
+        +iconfont($icon_twitter)
+    &--in
+      &:before
+        display: block
+        text-indent: 0
+        text-align: center
+        +iconfont($icon_instagram)
+    &--yt
+      &:before
+        display: block
+        text-indent: 0
+        text-align: center
+        +iconfont($icon_youtube)
+
+.footCopyright
+  display: block
+  width: 200px
+  padding: 100px 0
+  margin: 0 auto
+  text-align: center
+  color: rgba(#fff,.5)
+  font-size: 10px
+  +wf
+  @media screen and (max-width: $spWidth)
+    padding: 0 0 25px
+
+
+.mainTtl
+  font-size: 20px
+  font-weight: 600
+  margin: 60px 0 80px 0
+  letter-spacing: 0.35em
+  +wf
+  @media screen and (max-width: $spWidth)
+    margin: 60px 0 70px 0
+    font-size: 22px
+    text-align: center
+    text-indent: 0.4em
+
+.detailTtl
+  font-size: 32px
+  font-weight: 400
+  margin: 80px 0 10px 0
+  @media screen and (max-width: $tbWidth) and (min-width: $spWidth)
+    font-size: 30px
+  @media screen and (max-width: $spWidth)
+    font-size: 24px
+    margin: 60px 20px 10px
+    text-align: left
+  &__note
+    font-size: 12px
+    color: #999
+    @media screen and (max-width: $spWidth)
+      margin: 0 20px 20px
+
+.fadeIn
+  opacity: 0
+  transition: opacity 1s $MDMotion, transform 1s $MDMotion
+  &.is-visible
+    opacity: 1
+    transform: scale(1) translate3d(0, 0, 0)
+

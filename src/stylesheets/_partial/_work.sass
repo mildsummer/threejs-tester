@@ -1,0 +1,323 @@
+// work
+
+// list
+.work
+  margin: 0 0px 100px
+  @media screen and (max-width: $tbWidth) and (min-width: $spWidth)
+    // margin-left: 40px
+    // margin-right: 40px
+  @media screen and (max-width: $spWidth)
+    margin: 0 0 0px
+    height: auto !important
+  .mainTtl
+    margin-left: 120px
+    @media screen and (max-width: $tbWidth) and (min-width: $spWidth)
+      margin-left: 40px
+      margin-right: 40px
+    @media screen and (max-width: $spWidth)
+      margin-left: 0
+      display: none
+  &__nav
+    display: none
+    @media screen and (max-width: $tbWidth)
+      display: block
+      position: relative
+      margin: -40px 40px 40px
+      border-bottom: 1px solid #d9d9d9
+      white-space: nowrap
+      font-size: 13px
+      +wf
+    @media screen and (max-width: $spWidth)
+      margin: 0 0 10px
+      padding: 0 10px
+      width: 100%
+      border-bottom: none
+    &__wrap
+      position: relative
+      @media screen and (max-width: $spWidth)
+        width: 100%
+        height: 60px
+        overflow: hidden
+        background: #f3f4f3
+    &__wrap2
+      position: relative
+      @media screen and (max-width: $spWidth)
+        width: 100%
+        margin: 0 0 0px
+        padding-bottom: 50px
+        overflow-x: auto
+        overflow-y: hidden
+        -webkit-overflow-scrolling: touch
+    &__item
+      position: relative
+      display: inline-block
+      margin-right: -0.35em
+      padding-right: 20px
+      +menuSelect
+      @media screen and (max-width: $spWidth)
+        padding-right: 0
+        &:last-child
+          padding-right: 20px
+          margin-right: 0
+          &:before
+            right: 0
+      &:after
+        content: ''
+        position: absolute
+        left: 0
+        right: 0px
+        bottom: -1px
+        height: 1px
+        background: #d9d9d9
+        @media screen and (max-width: $spWidth)
+          display: none
+          // bottom: 0
+      &.is-current
+        font-weight: bold
+        &:before
+          content: ''
+          position: absolute
+          z-index: 2
+          left: 0
+          right: 20px
+          bottom: -1px
+          height: 1px
+          background: #000
+          @media screen and (max-width: $spWidth)
+            right: 0px
+            bottom: 0
+            height: 2px
+
+    &__link
+      position: relative
+      display: block
+      padding: 10px 5px
+      letter-spacing: $ls
+      @media screen and (max-width: $tbWidth) and (min-width: $spWidth)
+        padding: 10px 5px
+        letter-spacing: 0.05em
+      @media screen and (max-width: $spWidth)
+        padding: 0px 20px
+        line-height: 60px
+        letter-spacing: 0.05em
+
+// detail
+.work
+  &--detail
+    position: relative
+    margin: 0 120px 110px
+    +clear
+    @media screen and (max-width: $tbWidth) and (min-width: $spWidth)
+      margin-left: 40px
+      margin-right: 40px
+      margin-bottom: 20px
+    @media screen and (max-width: $spWidth)
+      margin: 0 0 80px
+      height: auto !important
+  &__ttl
+    font-size: 32px
+    transition: opacity 2s $MDMotion
+    @media screen and (max-width: $tbWidth) and (min-width: $spWidth)
+      font-size: 30px
+    @media screen and (max-width: $spWidth)
+      font-size: 24px
+    &__note
+      transition: opacity 2s $MDMotion
+  &__mainvis
+    margin: 100px 0 60px
+    transition: opacity 2s $MDMotion
+    +clear
+    @media screen and (max-width: $tbWidth)
+      margin: 60px 0 0
+    &__inr
+      position: relative
+      display: block
+      width: 100%
+      height: 0
+      margin: 0
+      padding: 56% 0 0
+      background-position: center center
+      background-size: cover
+      +notxt
+      &.is-hovered
+        .work__mainvis__playMovie ,
+        .work__mainvis__playYouku
+          opacity: 1
+
+      @media screen and (max-width: $spWidth)
+        padding-top: 100%
+    &__img
+      display: inline
+      width: 100%
+    &__playMovie
+      position: absolute
+      left: 0
+      top: 0
+      right: 0
+      bottom: 0
+      margin: auto
+      background: rgba(#000,.3)
+      opacity: 0
+      transition: opacity 0.36s $MDMotion
+      font-size: 98px
+      color: #fff
+      +notxt
+      @media screen and (max-width: $tbWidth)
+        opacity: 1
+      &:before
+        content: ''
+        position: absolute
+        left: 0
+        top: 0
+        right: 0
+        bottom: 0
+        width: 1em
+        height: 1em
+        margin: auto
+        text-shadow: 0px 0px 16px rgba(0, 0, 0, 0.35)
+        transition: transform 1.5s cubic-bezier(0.19, 1, 0.22, 1), opacity 1.5s cubic-bezier(0.19, 1, 0.22, 1)
+        +iconfont($icon_play)
+        @media screen and (max-width: $spWidth)
+          font-size: 54px
+      &.play
+        &:before
+          opacity: 0
+          transform: scale(1.3)
+    &__playYouku
+      position: absolute
+      right: 22px
+      bottom: 22px
+      background: #fff
+      border: 1px solid #fff
+      background: rgba(#fff,0)
+      padding: 8px 12px 8px 30px
+      display: inline-block
+      text-indent: 0
+      opacity: 0
+      font-size: 12px
+      color: #fff
+      transition: all 0.36s $MDMotion
+      +wf
+      @media screen and (max-width: $tbWidth)
+        display: none
+      &:before
+        content: ''
+        position: absolute
+        left: 12px
+        top: 0
+        bottom: 0
+        width: 0
+        height: 0
+        border-style: solid
+        border-width: 5px 0 5px 9px
+        border-color: transparent transparent transparent #fff
+        transition: all 0.36s $MDMotion 0s
+        margin: auto 0
+      &:hover
+        color: $color
+        background: #fff
+        &:before
+          border-color: transparent transparent transparent $color
+      &--sp
+        display: none
+        @media screen and (max-width: $tbWidth)
+          display: block
+          position: relative
+          float: right
+          opacity: 1
+          right: auto
+          bottom: auto
+          color: #ccc
+          padding-left: 26px
+          &:before
+            border-color: transparent transparent transparent #ccc
+            border-width: 4px 0 4px 7px
+    &__movie
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+      animation: fadeInMovie 1s ease
+  &__imgList
+    position: relative
+    height: 1000px
+    margin: 0 0 100px 0
+    +clear
+    @media screen and (max-width: $tbWidth) and (min-width: $spWidth)
+      margin-bottom: 80px
+    @media screen and (max-width: $spWidth)
+      margin: 0 10px 20px 10px
+    &__item
+      opacity: 0
+      position: absolute
+      overflow: hidden
+      cursor: pointer
+      +slideIn
+      //float: left
+      //width: 25%
+      //+notxt
+      //@media screen and (max-width: $spWidth)
+      //  width: 50%
+    &__inr
+     margin: 0
+     +ov
+    &__img
+      //display: inline
+      position: absolute
+      top: -100%
+      bottom: -100%
+      left: -100%
+      right: -100%
+      margin: auto
+
+  &__imgListBig
+    &__item
+      margin: 0 0 60px
+      +slideIn
+      @media screen and (max-width: $spWidth)
+        margin: 0 10px 20px
+      &__inr
+        margin: 0
+    &__img
+      display: block
+      width: 100%
+  &__description
+    &__inr
+      float: left
+      width: 100%
+      margin: 0 -420px 10px 0
+      padding: 0 420px 0 0
+      box-sizing: border-box
+      @media screen and (max-width: $tbWidth) and (min-width: $spWidth)
+        float: none
+        margin: 0 0px 120px
+        padding: 0
+        width: auto
+      @media screen and (max-width: $spWidth)
+        float: none
+        margin: 0 20px 40px
+        padding: 0
+        width: auto
+    &__ttl
+      font-size: 28px
+      font-weight: normal
+      margin: 0px 0 10px 0
+      @media screen and (max-width: $tbWidth) and (min-width: $spWidth)
+        font-size: 24px
+      @media screen and (max-width: $spWidth)
+        font-size: 18px
+        margin: 60px 0px 10px 20px
+        text-align: left
+      &__note
+        font-size: 12px
+        color: #999
+        margin: 0 0 40px
+        @media screen and (max-width: $spWidth)
+          margin: 0 0px 40px 20px
+    &__txt
+      margin-bottom: 1em
+      line-height: 2
+
+
+

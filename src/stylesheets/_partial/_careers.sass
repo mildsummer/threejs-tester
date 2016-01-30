@@ -1,0 +1,126 @@
+// careers
+.careers
+  margin: 0 120px
+  +clear
+  @media screen and (max-width: $tbWidth) and (min-width: $spWidth)
+    margin-right: 40px
+    margin-left: 40px
+  @media screen and (max-width: $spWidth)
+    height: auto
+    margin: 0 20px
+  &__inr
+    width: 100%
+    box-sizing: border-box
+    margin: 0 -500px 120px 0
+    padding: 0 500px 0 0
+    float: left
+    @media screen and (max-width: $tbWidth) and (min-width: $spWidth)
+      margin-right: -240px
+      padding-right: 320px
+    @media screen and (max-width: $spWidth)
+      float: none
+      margin-top: 50px
+      margin-right: 0
+      margin-bottom: 70px
+      padding-right: 0
+  &__lead
+    margin: 0 0 1.5em
+    font-size: 13px
+    line-height: 2
+    @media screen and (max-width: $spWidth)
+      margin-bottom: 30px
+  &__link
+    display: block
+    width: 140px
+    margin: 0
+    padding: 10px 0
+    transition: all 0.36s $MDMotion
+    text-align: center
+    border: 1px solid #ccc
+    background: rgba($bgColor,0)
+    font-weight: 600
+    letter-spacing: 0.05em
+    +wf
+    &:hover
+      color: #fff
+      border-color: $bgColor
+      background: rgba($bgColor,1)
+    &__wrap
+      padding: 20px 0 0
+      @media screen and (max-width: $spWidth)
+        padding-top: 0px
+
+  &__jobList
+    position: relative
+    width: 420px
+    margin: 0 0 120px
+    float: right
+    @media screen and (max-width: $tbWidth) and (min-width: $spWidth)
+      width: 240px
+    @media screen and (max-width: $spWidth)
+      width: auto
+      float: none
+      margin-bottom: 81px
+    &__ttl
+      position: relative
+      margin: 0 0 15px
+      padding: 0 0 10px
+      font-size: 12px
+      font-weight: 700
+      letter-spacing: $ls
+      +wf
+      &:before ,
+      &:after
+        content: ''
+        position: absolute
+        left: 0
+        bottom: 0
+        width: 190px
+        height: 1px
+        background: #e0e0e0
+        @media screen and (max-width: $spWidth)
+          width: 100%
+      &:after
+        left: auto
+        right: 0
+      @media screen and (max-width: $spWidth)
+        margin-bottom: 20px
+    &__list
+      position: relative
+      display: block
+      margin: 0
+      padding: 0 0 4px
+      &:before ,
+      &:after
+        content: ''
+        position: absolute
+        left: 0
+        bottom: 0
+        width: 190px
+        height: 1px
+        background: #e0e0e0
+        @media screen and (max-width: $spWidth)
+          width: auto
+      &:after
+        left: auto
+        right: 0
+    &__item
+      margin: 0
+      padding: 0 0 15px
+      display: inline-block
+      font-size: 13px
+      width: 190px
+      vertical-align: top
+      @media screen and (max-width: $spWidth)
+        display: block
+        width: auto
+      &:nth-child(odd)
+        margin-right: 35px
+        @media screen and (max-width: $spWidth)
+          margin-right: 0
+    &__link
+      color: #999
+      +ov
+
+
+
