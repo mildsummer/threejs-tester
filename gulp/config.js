@@ -1,4 +1,4 @@
-var src     = 'src/';      // 元ファイル
+var src     = 'source/';      // 元ファイル
 var dist    = '.temp/';     // コンパイル先
 var build = 'build/';  // リリース時
 
@@ -13,20 +13,13 @@ module.exports = {
   'isBuildFlag' : false,
   'isEjsAllFlag'  : true,
 
-
   'src': {
     'root'  : src,
     'html'  : src,
     'css'   : src + 'stylesheets/',
     'img'   : src + 'images/',
-    'sprite': src + 'materials/',
-    'js'    : src + 'javascripts/',
-    'lib'   : [src + 'javascripts/libs/jquery/dist/jquery.min.js',
-      src + 'javascripts/libs/jquery.pjax.min.js',
-      src + 'javascripts/libs/velocity/velocity.min.js',
-      src + 'javascripts/libs/OwlCarousel/owl-carousel/owl.carousel.js',
-      src + 'javascripts/libs/hammerjs/hammer.js',
-      src + 'javascripts/libs/jquery.hammer.js/jquery.hammer.js']
+    'sprite': src + 'materials/_sprites/*.png',
+    'js'    : src + 'javascripts/'
   },
 
   'dist': {
@@ -50,11 +43,7 @@ module.exports = {
   // copyするファイル
   'copy': [
     '**/*.ico',
-    'src/materials/*.png'
-  ],
-
-  // jshintの対象ファイル
-   lintfiles:[
-      // jsSrc + '/*.js'
+    'src/materials/*.*'
   ]
+
 };

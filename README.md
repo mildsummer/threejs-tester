@@ -21,23 +21,6 @@ $ npm install
 $ gulp
 ```
 
-## スプライト画像
-
-作成・更新は手動対応のため都度、下記のコマンドを実行
-
-```
-$ gulp sprite
-```
-
-## アイコンフォント
-
-作成・更新は手動対応のため都度、下記のコマンドを実行
-
-```
-$ gulp iconfont
-```
-
-
 ## 納品ファイル生成
 
 cssのminifyや、.mapなどを省いたファイルを生成
@@ -57,7 +40,6 @@ srcを編集。
 ```
 ├── .temp/（ビルド後のソース）
 │   ├── javascripts/
-│   │    └── libs/ （browserifyしないjsはここに生成）
 │   ├── stylesheets / images 等
 │   └── index.html
 │
@@ -68,19 +50,15 @@ srcを編集。
 │
 ├── src/（ビルド前のソース）
 │   ├── _partial/（共通パーツのhtml）
-│   ├── fonts/
-│   │    ├── _icons/ （アイコンフォント用svg）
-│   │    └── _templates/ （アイコンフォント用cssの雛形）
-│   ├── images/
-│   │    └── sprites/ （スプライト用png）
+│   ├── images/ 画像（写真など）
+│   ├── materials/ 画像（その他）
+│   │    └── _sprites/ スプライト用画像
 │   ├── javascripts/
-│   │    ├── browserify_libs/ （browserifyするjsをここに格納）
-│   │    ├── libs/ （browserifyしないjsをここに格納）
 │   │    └── main.js
 │   ├── stylesheets/
 │   │    ├── _partial/ （共通パーツのcss）
 │   │    └── style.scss
-│   └── index.ejs など（htmlは拡張子をejsにする）
+│   └── index.jade など（htmlは拡張子をjadeにする）
 │
 ├── .git/
 ├── .gitignore

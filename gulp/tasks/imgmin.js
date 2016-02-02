@@ -13,7 +13,7 @@ gulp.task( 'imgMin', function(){
   gulp.src([
     config.src.img + '**/*.+(jpg|jpeg|gif|svg)' ,
     // spritesの素材を除外
-    '!' + config.src.img + '_sprites/**/*'
+    '!' + config.src.sprite
     ])
     .pipe(changed( config.dist.img ))
     .pipe(imagemin( {
@@ -28,7 +28,7 @@ gulp.task( 'imgMinPng', function(){
   gulp.src([
     config.src.img + '**/*.png' ,
     // spritesの素材を除外
-    '!' + config.src.img + '_sprites/**/*'
+    '!' + config.src.sprite
     ])
     .pipe(changed( config.dist.img ))
     .pipe(imagemin({

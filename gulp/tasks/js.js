@@ -36,9 +36,9 @@ gulp.task('js', function(){
             test: /\.js$/,
             exclude: /node_modules/,
             loader: "babel-loader",
-            query: {
-              presets: ['es2015']
-            }
+            //query: {
+            //  presets: ['es2015']
+            //}
           }
         ]
       }

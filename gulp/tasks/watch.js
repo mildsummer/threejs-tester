@@ -35,7 +35,7 @@ gulp.task('watch', function(){
   });
 
   // js
-  gulp.watch(config.src.js+'**/*', ['js']);
+  gulp.watch(config.src.js+'*', ['js']);
   // gulp.watch( setPath.distDir + '**/*' , reload);
 });
 

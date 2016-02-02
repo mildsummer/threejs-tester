@@ -20,7 +20,6 @@ gulp.task('build_main', function(callback){
     'copy',
     'html',
     'css',
-    'iconfont',
     'imgMin',
     'imgMinPng',
     'js',

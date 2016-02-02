@@ -7,11 +7,9 @@ gulp.task('default', [
   'html',
   'css',
   'sprite',
-  'iconfont',
   'imgMin',
   'imgMinPng',
   'js',
-  'lib',
   'watch'
 ]);
 

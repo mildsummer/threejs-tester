@@ -1,9 +1,9 @@
 # Customize
 /node_modules
-/build
-/src/javascripts/libs/*/
-*.DS_Store
 /.temp
+/build
+*.DS_Store
+
 # Created by https://www.gitignore.io
 
 ### WebStorm ###
