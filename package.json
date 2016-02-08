@@ -34,7 +34,8 @@
     "run-sequence": "^1.1.5",
     "vinyl-buffer": "^1.0.0",
     "vinyl-named": "^1.1.0",
-    "vinyl-source-stream": "^1.1.0"
+    "vinyl-source-stream": "^1.1.0",
+    "webpack-stream": "^3.1.0"
   },
   "dependencies": {
     "jquery": "^2.2.0"

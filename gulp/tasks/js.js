@@ -7,7 +7,7 @@ var gulpif = require('gulp-if');
 var config  = require('../config');
 
 // javascripts
-var webpack = require('gulp-webpack');
+var webpack = require('webpack-stream');
 var named = require('vinyl-named');
 var source = require('vinyl-source-stream');
 var uglify = require('gulp-uglify');
