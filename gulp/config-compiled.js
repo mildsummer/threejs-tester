@@ -42,7 +42,7 @@ module.exports = {
   },
 
   // copyするファイル
-  'copy': ['**/*.ico', 'src/materials/*.*']
+  'copy': ['**/*.ico', 'source/materials/*', 'source/fonts/*']
 
 };
 

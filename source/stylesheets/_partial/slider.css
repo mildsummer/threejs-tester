@@ -3,11 +3,13 @@
   width : 100%;
   bottom : 0;
   z-index: 1;
+  background: none;
 }
 
 .slider__wrapper .slider {
   display: block;
   width: 100%;
+  background: none;
 }
 
 input[type=range].slider {
@@ -22,41 +24,41 @@ input[type=range].slider::-webkit-slider-runnable-track {
   width: 100%;
   height: 40px;
   cursor: pointer;
-  box-shadow: 0px 0px 0.5px #000000, 0px 0px 0px #0d0d0d;
-  background: #484d4d;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
+  background: rgba(200, 200, 200, 0.5);
   border-radius: 0px;
   border: 0px solid rgba(1, 1, 1, 0);
 }
 input[type=range].slider::-webkit-slider-thumb {
   box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
-  border: 0px solid rgba(0, 0, 0, 0);
+  border: 0px solid rgba(255, 30, 0, 0);
   height: 40px;
   width: 40px;
   border-radius: 0px;
-  background: #c8c8c8;
+  background: rgba(255, 112, 62, 0.93);
   cursor: pointer;
   -webkit-appearance: none;
   margin-top: 0px;
 }
 input[type=range].slider:focus::-webkit-slider-runnable-track {
-  background: #545a5a;
+  background: rgba(213, 213, 213, 0.5);
 }
 input[type=range].slider::-moz-range-track {
   width: 100%;
   height: 40px;
   cursor: pointer;
-  box-shadow: 0px 0px 0.5px #000000, 0px 0px 0px #0d0d0d;
-  background: #484d4d;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
+  background: rgba(200, 200, 200, 0.5);
   border-radius: 0px;
   border: 0px solid rgba(1, 1, 1, 0);
 }
 input[type=range].slider::-moz-range-thumb {
   box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
-  border: 0px solid rgba(0, 0, 0, 0);
+  border: 0px solid rgba(255, 30, 0, 0);
   height: 40px;
   width: 40px;
   border-radius: 0px;
-  background: #c8c8c8;
+  background: rgba(255, 112, 62, 0.93);
   cursor: pointer;
 }
 input[type=range].slider::-ms-track {
@@ -68,29 +70,29 @@ input[type=range].slider::-ms-track {
   color: transparent;
 }
 input[type=range].slider::-ms-fill-lower {
-  background: #3c4040;
+  background: rgba(187, 187, 187, 0.5);
   border: 0px solid rgba(1, 1, 1, 0);
   border-radius: 0px;
-  box-shadow: 0px 0px 0.5px #000000, 0px 0px 0px #0d0d0d;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
 }
 input[type=range].slider::-ms-fill-upper {
-  background: #484d4d;
+  background: rgba(200, 200, 200, 0.5);
   border: 0px solid rgba(1, 1, 1, 0);
   border-radius: 0px;
-  box-shadow: 0px 0px 0.5px #000000, 0px 0px 0px #0d0d0d;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
 }
 input[type=range].slider::-ms-thumb {
   box-shadow: 0px 0px 0px rgba(0, 0, 0, 0), 0px 0px 0px rgba(13, 13, 13, 0);
-  border: 0px solid rgba(0, 0, 0, 0);
+  border: 0px solid rgba(255, 30, 0, 0);
   width: 40px;
   border-radius: 0px;
-  background: #c8c8c8;
+  background: rgba(255, 112, 62, 0.93);
   cursor: pointer;
   height: 40px;
 }
 input[type=range].slider:focus::-ms-fill-lower {
-  background: #484d4d;
+  background: rgba(200, 200, 200, 0.5);
 }
 input[type=range].slider:focus::-ms-fill-upper {
-  background: #545a5a;
+  background: rgba(213, 213, 213, 0.5);
 }
