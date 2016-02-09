@@ -3,13 +3,14 @@ import RamenMuseum from './components/RamenMuseum';
 const RAMEN_NUM = 50;
 
 let ramenMuseum = new RamenMuseum('.ramen__wrapper', RAMEN_NUM);
-let ramenNumElem = document.querySelector('.ramenNum');
+let $ramenNum = $('.ramenNum');
 
-let slider = document.querySelector('.slider');
-slider.addEventListener('input', function() {
-  ramenMuseum.setRamenNum(slider.value);
-  ramenNumElem.innerText = slider.value;
+let $slider = $('.slider');
+$slider.on('input', function() {
+  ramenMuseum.setRamenNum($slider.val());
+  $ramenNum.text($slider.val());
 });
-ramenNumElem.innerText = slider.value = RAMEN_NUM;
+$ramenNum.text(RAMEN_NUM);
+$slider.val(RAMEN_NUM);
 
-window.addEventListener('resize', ramenMuseum.handleResize.bind(ramenMuseum));
+$(window).resize(ramenMuseum.handleResize.bind(ramenMuseum));
