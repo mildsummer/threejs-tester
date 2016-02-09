@@ -24,6 +24,13 @@ class RamenMuseum {
       './images/09.jpg',
       './images/10.jpg',
       './images/11.gif',
+      './images/12.png',
+      './images/12.png',
+      './images/12.png',
+      './images/12.png',
+      './images/12.png',
+      './images/12.png',
+      './images/12.png',
       './images/12.png'
     ];
     for (var i = 1; i <= ramenNum; i++) {

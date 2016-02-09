@@ -4,7 +4,7 @@ class Ramen {
       this._setTexture(texture, scene);
     });
     var geometry = new THREE.PlaneGeometry(10,10);
-    var material = new THREE.MeshBasicMaterial();
+    var material = new THREE.MeshBasicMaterial({ transparent: true });
     this.mesh = new THREE.Mesh(geometry, material);
     scene.add(this.mesh);
   }
