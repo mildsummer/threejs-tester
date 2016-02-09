@@ -1,7 +1,6 @@
 # Customize
 /node_modules
 /.temp
-/build
 *.DS_Store
 
 # Created by https://www.gitignore.io
