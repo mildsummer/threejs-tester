@@ -39,7 +39,6 @@ class Ramen {
     this.mesh.position.set(this.position.x + this.radius * Math.cos(this.angle), this.position.y + this.radius * Math.sin(this.angle), 0);
     requestAnimationFrame(this._move.bind(this));
   }
-
 }
 
 export default Ramen;

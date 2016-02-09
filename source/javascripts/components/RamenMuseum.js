@@ -12,7 +12,20 @@ class RamenMuseum {
     this.camera.position.z = 5;
 
     this.ramens = [];
-    this.ramenURLs = ['./images/01.jpg', './images/02.jpg', './images/03.jpg', './images/04.jpg', './images/05.jpg', './images/06.jpg', './images/07.jpg', './images/08.jpg', './images/09.jpg', './images/10.jpg', './images/11.gif', './images/12.png'];
+    this.ramenURLs = [
+      './images/01.jpg',
+      './images/02.jpg',
+      './images/03.jpg',
+      './images/04.jpg',
+      './images/05.jpg',
+      './images/06.jpg',
+      './images/07.jpg',
+      './images/08.jpg',
+      './images/09.jpg',
+      './images/10.jpg',
+      './images/11.gif',
+      './images/12.png'
+    ];
     for (var i = 1; i <= ramenNum; i++) {
       this._addRamen();
     }
