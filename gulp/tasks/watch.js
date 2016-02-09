@@ -22,20 +22,20 @@ gulp.task('watch', function(){
   });
 
   // css
-  gulp.watch(config.src.css + '**/*.sass', ['css']);
+  gulp.watch(config.src.css + '_partial/*', ['css']);
 
   // img
-  gulp.watch(config.src.img+'**/*.png', function() {
+  gulp.watch(config.src.img + '**/*.png', function() {
     gulp.start('imgMinPng');
   });
 
   // ファイルが追加された時にも実行
-  gulp.watch(config.src.img+'**/*.+(jpg|jpeg|gif|svg)', function() {
+  gulp.watch(config.src.img + '**/*.+(jpg|jpeg|gif|svg)', function() {
     gulp.start('imgMin');
   });
 
   // js
-  gulp.watch(config.src.js+'*', ['js']);
+  gulp.watch(config.src.js + '*', ['js']);
   // gulp.watch( setPath.distDir + '**/*' , reload);
 });
 

@@ -2,9 +2,13 @@ extends /_template/_layout
 
 block vars
   - var head = {}
-  - head.title       = ''
+  - head.title       = 'Three.js Tester : Ramen Museum'
   - head.keywords    = ''
   - head.description = ''
 
 block content
-  div
+  div.ramen__wrapper
+  div.slider__wrapper
+    input.slider(type="range", max="200")
+  div.ramenNum__wrapper
+    span.ramenNum

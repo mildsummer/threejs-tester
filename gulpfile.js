@@ -1,2 +1,2 @@
-import dir from 'require-dir';
+var dir = require('require-dir');
 dir( './gulp/tasks', { recurse: true } );

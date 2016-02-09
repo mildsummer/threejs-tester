@@ -19,7 +19,8 @@ module.exports = {
     'css'   : src + 'stylesheets/',
     'img'   : src + 'images/',
     'sprite': src + 'materials/_sprites/*.png',
-    'js'    : src + 'javascripts/'
+    'js'    : src + 'javascripts/',
+    'lib'   : ['node_modules/three/three.js', 'node_modules/stats.js/build/stats.min.js']
   },
 
   'dist': {

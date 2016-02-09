@@ -11,7 +11,7 @@ var pngquant = require('imagemin-pngquant');
 // 画像圧縮
 gulp.task( 'imgMin', function(){
   gulp.src([
-    config.src.img + '**/*.+(jpg|jpeg|gif|svg)' ,
+    config.src.img + '*' ,
     // spritesの素材を除外
     '!' + config.src.sprite
     ])
@@ -26,7 +26,7 @@ gulp.task( 'imgMin', function(){
 
 gulp.task( 'imgMinPng', function(){
   gulp.src([
-    config.src.img + '**/*.png' ,
+    config.src.img + '*.png' ,
     // spritesの素材を除外
     '!' + config.src.sprite
     ])

@@ -10,6 +10,7 @@ gulp.task('default', [
   'imgMin',
   'imgMinPng',
   'js',
+  'lib',
   'watch'
 ]);
 
