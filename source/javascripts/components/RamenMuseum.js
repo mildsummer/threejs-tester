@@ -11,9 +11,9 @@ class RamenMuseum {
     this.camera = new THREE.PerspectiveCamera(75, this.wrapper.clientWidth / this.wrapper.clientHeight, 0.1, 1000);
     this.camera.position.z = 5;
 
-    this.IMAGE_NUM = 10;
     this.ramens = [];
-    for(var i = 1; i <= ramenNum; i++) {
+    this.ramenURLs = ['./images/01.jpg', './images/02.jpg', './images/03.jpg', './images/04.jpg', './images/05.jpg', './images/06.jpg', './images/07.jpg', './images/08.jpg', './images/09.jpg', './images/10.jpg', './images/11.gif', './images/12.png'];
+    for (var i = 1; i <= ramenNum; i++) {
       this._addRamen();
     }
 
@@ -39,15 +39,16 @@ class RamenMuseum {
   }
 
   setRamenNum(ramenNum) {
-    if(ramenNum > this.ramens.length) {
+    if (ramenNum > this.ramens.length) {
       this._addRamen().setRamenNum(ramenNum);
-    } else if(ramenNum < this.ramens.length) {
+    } else if (ramenNum < this.ramens.length) {
       this._removeRamen().setRamenNum(ramenNum);
     }
   }
 
   _addRamen() {
-    let ramen = new Ramen(`./images/${("00" + (this.ramens.length % this.IMAGE_NUM + 1)).slice(-2)}.jpg`, this.scene);
+    let ramenURL = this.ramenURLs[Math.floor(this.ramenURLs.length * Math.random())];
+    let ramen = new Ramen(ramenURL, this.scene);
     ramen.setPosition(Math.random() * 8 - 4, Math.random() * 8 - 4).setScale(0.1).startMotion(1 * Math.random(), 1 * Math.random(), 0.5 * Math.random());
     this.ramens.push(ramen);
     return this;
