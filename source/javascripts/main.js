@@ -13,4 +13,13 @@ $slider.on('input', function() {
 $ramenNum.text(RAMEN_NUM);
 $slider.val(RAMEN_NUM);
 
+$('.ramenTypeButton').click(function() {
+  ramenMuseum.toggleRamenType();
+  if(ramenMuseum.ramenType === ramenMuseum.RAMEN_TYPE_MESH) {
+    $(this).text('>Mesh / Sprite');
+  } else {
+    $(this).text('Mesh / >Sprite');
+  }
+});
+
 $(window).resize(ramenMuseum.handleResize.bind(ramenMuseum));

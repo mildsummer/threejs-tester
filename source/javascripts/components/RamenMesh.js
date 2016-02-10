@@ -1,9 +1,10 @@
-class Ramen {
+class RamenMesh {
   constructor(texture, scene) {
-    var geometry = new THREE.PlaneGeometry(10,10);
+    var geometry = new THREE.PlaneGeometry(1,1);
     var material = new THREE.MeshBasicMaterial({ transparent: true, map: texture });
     this.mesh = new THREE.Mesh(geometry, material);
-    scene.add(this.mesh);
+    this.scene = scene;
+    this.scene.add(this.mesh);
   }
 
   setPosition(x, y) {
@@ -30,6 +31,14 @@ class Ramen {
     this.mesh.position.set(this.position.x + this.radius * Math.cos(this.angle), this.position.y + this.radius * Math.sin(this.angle), 0);
     requestAnimationFrame(this._move.bind(this));
   }
+
+  remove() {
+    this.scene.remove(this.mesh);
+    this.mesh.geometry.dispose();
+    this.mesh.material.map.dispose();
+    this.mesh.material.dispose();
+    return this;
+  }
 }
 
-export default Ramen;
+export default RamenMesh;

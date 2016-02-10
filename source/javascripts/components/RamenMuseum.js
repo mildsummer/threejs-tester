@@ -1,4 +1,5 @@
-import Ramen from './Ramen';
+import RamenMesh from './RamenMesh';
+import RamenSprite from './RamenSprite';
 
 class RamenMuseum {
   constructor(wrapperSelector, ramenNum) {
@@ -11,6 +12,8 @@ class RamenMuseum {
     this.camera = new THREE.PerspectiveCamera(75, this.wrapper.clientWidth / this.wrapper.clientHeight, 0.1, 1000);
     this.camera.position.z = 5;
 
+    this.ramenType = this.RAMEN_TYPE_MESH;
+    this.ramenNum = ramenNum;
     this.ramens = [];
     this.ramenURLs = [
       './images/01.jpg',
@@ -36,7 +39,7 @@ class RamenMuseum {
 
     this._createRamenTextures().then((textures) => {
       this.ramenTextures = textures;
-      this._createRamenMeshes(ramenNum);
+      this._addAllRamen();
     });
 
     this.stats = new Stats();
@@ -65,8 +68,8 @@ class RamenMuseum {
     })
   }
 
-  _createRamenMeshes(ramenNum) {
-    for (var i = 1; i <= ramenNum; i++) {
+  _addAllRamen() {
+    for (var i = 1; i <= this.ramenNum; i++) {
       this._addRamen();
     }
     return this;
@@ -85,23 +88,31 @@ class RamenMuseum {
     } else if (ramenNum < this.ramens.length) {
       this._removeRamen().setRamenNum(ramenNum);
     }
+    this.ramenNum = ramenNum;
   }
 
   _addRamen() {
     let ramenTexture = this.ramenTextures[Math.floor(this.ramenTextures.length * Math.random())];
-    let ramen = new Ramen(ramenTexture, this.scene);
-    ramen.setPosition(Math.random() * 8 - 4, Math.random() * 8 - 4).setScale(0.1).startMotion(1 * Math.random(), 1 * Math.random(), 0.5 * Math.random());
+    let ramen;
+    if(this.ramenType === this.RAMEN_TYPE_MESH) {
+      ramen = new RamenMesh(ramenTexture, this.scene);
+    } else if(this.ramenType === this.RAMEN_TYPE_SPRITE) {
+      ramen = new RamenSprite(ramenTexture, this.scene);
+    }
+    ramen.setPosition(Math.random() * 8 - 4, Math.random() * 8 - 4).startMotion(1 * Math.random(), 1 * Math.random(), 0.5 * Math.random());
     this.ramens.push(ramen);
     return this;
   }
 
   _removeRamen() {
-    let ramen = this.ramens[this.ramens.length - 1];
-    this.scene.remove(ramen.mesh);
-    ramen.mesh.geometry.dispose();
-    ramen.mesh.material.map.dispose();
-    ramen.mesh.material.dispose();
-    this.ramens.pop();
+    this.ramens.pop().remove();
+    return this;
+  }
+
+  _removeAllRamen() {
+    while(this.ramens.length) {
+      this._removeRamen();
+    }
     return this;
   }
 
@@ -111,6 +122,15 @@ class RamenMuseum {
     this.camera.updateProjectionMatrix();
     return this;
   }
+
+  toggleRamenType() {
+    console.log(this.RAMEN_TYPE_MESH);
+    this.ramenType = this.ramenType === this.RAMEN_TYPE_MESH ? this.RAMEN_TYPE_SPRITE : this.RAMEN_TYPE_MESH;
+    return this._removeAllRamen()._addAllRamen();
+  }
 }
+
+RamenMuseum.prototype.RAMEN_TYPE_MESH = 'MESH';
+RamenMuseum.prototype.RAMEN_TYPE_SPRITE = 'SPRITE';
 
 export default RamenMuseum;
