@@ -124,7 +124,6 @@ class RamenMuseum {
   }
 
   toggleRamenType() {
-    console.log(this.RAMEN_TYPE_MESH);
     this.ramenType = this.ramenType === this.RAMEN_TYPE_MESH ? this.RAMEN_TYPE_SPRITE : this.RAMEN_TYPE_MESH;
     return this._removeAllRamen()._addAllRamen();
   }
