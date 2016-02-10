@@ -1,18 +1,9 @@
 class Ramen {
-  constructor(url, scene) {
-    new THREE.TextureLoader().load(url, (texture) => {
-      this._setTexture(texture, scene);
-    });
+  constructor(texture, scene) {
     var geometry = new THREE.PlaneGeometry(10,10);
-    var material = new THREE.MeshBasicMaterial({ transparent: true });
+    var material = new THREE.MeshBasicMaterial({ transparent: true, map: texture });
     this.mesh = new THREE.Mesh(geometry, material);
     scene.add(this.mesh);
-  }
-
-  _setTexture(texture) {
-    this.mesh.material.map = texture;
-    this.mesh.material.needsUpdate = true;
-    return this;
   }
 
   setPosition(x, y) {

@@ -33,9 +33,11 @@ class RamenMuseum {
       './images/12.png',
       './images/12.png'
     ];
-    for (var i = 1; i <= ramenNum; i++) {
-      this._addRamen();
-    }
+
+    this._createRamenTextures().then((textures) => {
+      this.ramenTextures = textures;
+      this._createRamenMeshes(ramenNum);
+    });
 
     this.stats = new Stats();
     this.stats.setMode(0); // 0: fps, 1: ms, 2: mb
@@ -48,6 +50,25 @@ class RamenMuseum {
     this.wrapper.appendChild(this.stats.domElement);
 
     this._render();
+    return this;
+  }
+
+  _createRamenTextures() {
+    return new Promise((resolve, reject) => {
+      Promise.all(this.ramenURLs.map((url) => {
+        return new Promise((resolve, reject) => {
+          new THREE.TextureLoader().load(url, resolve);
+        });
+      })).then((textures) => {
+        resolve(textures)
+      })
+    })
+  }
+
+  _createRamenMeshes(ramenNum) {
+    for (var i = 1; i <= ramenNum; i++) {
+      this._addRamen();
+    }
     return this;
   }
 
@@ -67,8 +88,8 @@ class RamenMuseum {
   }
 
   _addRamen() {
-    let ramenURL = this.ramenURLs[Math.floor(this.ramenURLs.length * Math.random())];
-    let ramen = new Ramen(ramenURL, this.scene);
+    let ramenTexture = this.ramenTextures[Math.floor(this.ramenTextures.length * Math.random())];
+    let ramen = new Ramen(ramenTexture, this.scene);
     ramen.setPosition(Math.random() * 8 - 4, Math.random() * 8 - 4).setScale(0.1).startMotion(1 * Math.random(), 1 * Math.random(), 0.5 * Math.random());
     this.ramens.push(ramen);
     return this;
